@@ -5,7 +5,8 @@
 - **Live run:** organisers will deploy qualified bots over the Christmas holidays 2025
 - **Judging:** weighted between strategy idea quality and the PnL generated during the live run
 - **Deadline:** 31 December 2025 @ 23:59 UTC
-- **Submission:** share your GitHub repository through the Google Form (link TBA)
+- **Submission:** share your GitHub repository through the Google Form: https://forms.gle/sfiPXoHtwaKqRhWV9
+
 - **Support:** weekly workshops plus the Building Division WhatsApp channel
 - **Universe:** any Solana-based asset with an available price feed (template defaults to SOL but you may switch to any token)
 - **AI tools:** use of AI assistants to understand or extend the codebase is not only allowed but encouraged
