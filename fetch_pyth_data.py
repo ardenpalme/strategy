@@ -4,20 +4,26 @@ from datetime import datetime, timedelta
 import time
 import sys
 
+## Supported resolutions are ['1', '2', '5', '15', '30', '60', '120', '240', '360', '720', 'D', '1D', 'W', '1W', 'M', '1M']"}
+
+res_min_to_api_res = { 1:'1', 5:'5', 15:'15', 60:'60', 240:'240', 360:'360', 720:'720', 1440:'1D'}
+interval_to_res_min = {'1m': 1, '5m': 5, '15m': 15, '1h': 60, '4h': 240, '6h':360, '1d': 1440}
 
 def _interval_to_resolution_minutes(interval: str) -> int:
-    mapping = {'1m': 1, '5m': 5, '15m': 15, '1h': 60, '4h': 240, '1d': 1440}
-    if interval not in mapping:
-        raise ValueError(f"Unsupported interval: {interval}. Supported: {', '.join(mapping.keys())}")
-    return mapping[interval]
+    if interval not in interval_to_res_min:
+        raise ValueError(f"Unsupported interval: {interval}. Supported: {', '.join(interval_to_res_min.keys())}")
+    return interval_to_res_min[interval]
 
 
 def fetch_pyth_history(symbol: str, resolution_minutes: int, from_timestamp_s: int, to_timestamp_s: int):
     """Fetch OHLC candlestick data from Pyth. Returns DataFrame or None."""
     url = "https://benchmarks.pyth.network/v1/shims/tradingview/history"
+
+    api_res = res_min_to_api_res[resolution_minutes]
+
     params = {
         "symbol": symbol,
-        "resolution": str(resolution_minutes),
+        "resolution": api_res,
         "from": int(from_timestamp_s),
         "to": int(to_timestamp_s),
     }
@@ -28,6 +34,7 @@ def fetch_pyth_history(symbol: str, resolution_minutes: int, from_timestamp_s: i
         data = response.json()
 
         if data.get("s") != "ok" or not data.get("t"):
+            print("API Error", data)
             return None
 
         df = pd.DataFrame({
@@ -102,11 +109,14 @@ def save_to_csv(df, filename):
     return filename
 
 
+
+
 if __name__ == "__main__":
-    SYMBOL = "Crypto.SOL/USD"
-    INTERVAL = '1h'
-    DAYS_BACK = 365 * 5
-    OUTPUT_FILE = f'SOL_{INTERVAL}_data.csv'
+    TICKER = sys.argv[1] # TODO: input validation
+    SYMBOL = f'Crypto.{TICKER}/USD'
+    INTERVAL = sys.argv[2]
+    DAYS_BACK = 365 * 3
+    OUTPUT_FILE = f'data/{TICKER}_{INTERVAL}_data.csv'
     
     print("=" * 60)
     print("Pyth Historical Data Fetcher (OHLC only)")

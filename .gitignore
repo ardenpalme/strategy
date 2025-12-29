@@ -29,3 +29,10 @@ build/
 coverage/
 .nyc_output/
 new-wallet.json
+
+.ipynb_checkpoints/
+data/
+*.aux
+*.fdb_latexmk
+*.synctex.gz
+*.fls

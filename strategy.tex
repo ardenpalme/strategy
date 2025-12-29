@@ -1,0 +1,67 @@
+\documentclass[11pt, a4paper]{article}
+
+% --- Page Layout & Margins ---
+\usepackage[
+    a4paper,
+    margin=1in,
+    headheight=13.6pt
+]{geometry}
+
+% --- Font & Typography ---
+\usepackage[T1]{fontenc} % Use modern font encodings
+\usepackage{lmodern}     % Use the Latin Modern font, for a crisp look
+%\usepackage{parskip}     % Use space between paragraphs instead of indentation. Commented out to restore traditional paragraph indents.
+
+% --- Color & Graphics ---
+\usepackage[dvipsnames]{xcolor} % Access to a wider range of colors
+\usepackage{graphicx}
+
+% --- Headers & Footers ---
+\usepackage{fancyhdr}    % For custom headers and footers
+
+% --- Tables & Boxes ---
+\usepackage{tabularx}    % For tables with columns that automatically adjust width
+\usepackage[most]{tcolorbox} % For creating styled boxes
+
+% --- Section Styling ---
+\usepackage{titlesec}    % To customize section titles
+
+% --- Placeholder Text ---
+\usepackage{lipsum}      % Generates dummy text, remove for final version
+
+% -------------------------------------------------------------------------
+% CUSTOMIZATION & SETUP
+% -------------------------------------------------------------------------
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{cleveref}
+
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  stringstyle=\color{orange},
+  commentstyle=\color{gray},
+  showstringspaces=false,
+  frame=single,
+  columns=flexible
+}
+
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Y}{\mathbf{Y}}
+\newcommand{\E}{\mathbf{\epsilon}}
+
+
+% --- Define a theme color ---
+% Choose your own! E.g., MidnightBlue, RoyalBlue, SteelBlue, OliveGreen
+\definecolor{ThemeColor}{RGB}{45, 85, 155} % A nice, professional blue
+\begin{document}
+
+\section{Test2}
+
+\end{document}
