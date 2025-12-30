@@ -82,3 +82,4 @@ Adapt or replace any component as long as your submission instructions explain h
   - Any additional resources that may support your submission
 - Access granted to the judging team (public repo or invite required reviewers)
 - Repository link submitted via Google Form (TBA) before the deadline
+uv pip install torch --index-url https://download.pytorch.org/whl/xpu
